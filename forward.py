@@ -9,8 +9,7 @@ API_HASH = "f2cc3fdc32197c8fbaae9d0bf69d2033"
 BOT_TOKEN = "6628233864:AAGIlIOZDqEp0VaL4DF47wE40A18fJUjiQY"
 
 
-app = Client("editor", api_id=API_ID,
-             api_hash=API_HASH, bot_token=BOT_TOKEN)
+app = Client("editorbot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 source_id = -1001879320894
 target_id = -1001608380232
@@ -27,19 +26,24 @@ def dump_message(client, message):
 
 
 @app.on_message(filters.command(["start", "help"]))
-def welcome_message(client, message):
+def send_wesnos(client, message):
     app.send_message(message.chat.id, """\
 Hi there, I am editorBot.
 I edit all the latest message. Use /start to use me.
+/setsource to change the Source Chat
+                     
+/settarget to change the Target Chat
+
 \
 """)
 
 
 @app.on_message(filters.chat(source_id))
 def forward_to_target_channel(client, message):
-    msg = app.send_message(target_id, "Team Coming ")
+    msg = app.send_message(target_id, " Coming ")
     current_id = msg.id
-    last_message = current_id
+    msg.delete()
+    last_message = current_id - 1
     if last_message:
         if message.text:
             try:
@@ -60,8 +64,6 @@ def forward_to_target_channel(client, message):
                     chat_id=target_id, message_id=new_message, media=InputMediaPhoto(file_id))
             os.remove(file_id)
         app.send_message(target_id, "Team Updated")
-
-            
     else:
         app.send_message(target_id, message.text)
 
