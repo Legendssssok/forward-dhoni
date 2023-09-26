@@ -2,8 +2,7 @@ import requests, time
 import telebot
 
 bot = telebot.TeleBot("6339536087:AAF8Q0riD04DxpLSFf4mn-J4QaVpvL9iiTc")
-DHONIPRIME_URL = 'https://dhoniprime-default-rtdb.firebaseio.com/Match.json'
-times = time.strftime("%S")
+DHONIPRIME_URL = 'https://dhoniprime.firebaseio.com/Match.json'
 
 def get_urls() -> list[str]:
 	r = requests.get(url=DHONIPRIME_URL).json()
