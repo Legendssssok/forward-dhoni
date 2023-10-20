@@ -1,1 +1,1 @@
-worker: python3 clone.py
+worker: python3 dhoni.py
