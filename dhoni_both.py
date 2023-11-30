@@ -26,8 +26,8 @@ def get_url() -> str:
 
 
 global text
-text = get_urls()
-texts = get_url()
+text = ""
+texts = ""
 
 while (True):
     text_new = get_urls()
