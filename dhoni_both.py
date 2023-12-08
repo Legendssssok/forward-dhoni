@@ -25,18 +25,21 @@ def get_url() -> str:
     return links
 
 
-global text
+global text, texts
 text = ""
 texts = ""
 
 while (True):
-    text_new = get_urls()
-    text_news = get_url()
+    text_news = get_urls()
+    text_new = get_url()
+    if text_news != texts:
+        bot.send_message(chat_id='-1001950168101',
+                         text=text_news, disable_web_page_preview=True)
+        print("DhOni Links uploaded! Sent to channel")
+        texts = text_news
     if text_new != text:
         bot.send_message(chat_id='-1001481256781',
                          text=text_new, disable_web_page_preview=True)
-        bot.send_message(chat_id='-1001950168101',
-                         text=text_news, disable_web_page_preview=True)
         print("DhOni Links uploaded! Sent to channel")
         text = text_new
     time.sleep(0.1)
