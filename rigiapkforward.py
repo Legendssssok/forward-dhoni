@@ -2,8 +2,11 @@ import requests
 import time
 import telebot
 
+TOKEN = "6746300449:AAHEDS_HoccrV8DD8REyIMdd_c05b8lev18"
 
-king = telebot.TeleBot("6725785512:AAHjz2sARGFurhhjU8JMYcIPv2uc55I5aZg")
+king = telebot.TeleBot(TOKEN)
+
+channel_id = -1002053364776
 
 print("Server is Running")
 
@@ -60,11 +63,11 @@ image = ""
 while True:
 	response, response2 = get_urls()
 	if response != text:
-		king.send_message(-1002053364776, response)
+		king.send_message(channel_id, response)
 		text = response
 		
 	if response2 != image:
-		king.send_photo(-1002053364776, response2)
+		king.send_photo(channel_id, response2)
 		image = response2
 	
 king.infinity_polling()
