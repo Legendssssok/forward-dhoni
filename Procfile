@@ -1,1 +1,1 @@
-worker: python3 dhoni_both.py
+worker: python3 rigiapkforward.py
