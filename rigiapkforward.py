@@ -20,7 +20,7 @@ def handle_messages(message):
                 target_channel = message.text.split()[1]  # Extract channel ID from the message
                 bot.reply_to(message, f"Target channel has been set to {target_channel}.")
                 bot.reply_to(message, f"Must Add The Bot To Target Channel. If You Didn't Add Forwarding Will Not Work.")
-			except Exception as e:
+	    except Exception as e:
                 bot.reply_to(message, f"Error: {e}")
 
         elif message.text.startswith('/start'):
