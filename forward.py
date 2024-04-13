@@ -1,8 +1,7 @@
-from pyrogram import Client, filters
-from pyrogram.types import Message
 import os
-from pyrogram.types import InputMediaPhoto
 
+from pyrogram import Client, filters
+from pyrogram.types import InputMediaPhoto
 
 API_ID = 11573285
 API_HASH = "f2cc3fdc32197c8fbaae9d0bf69d2033"
@@ -27,7 +26,9 @@ def dump_message(client, message):
 
 @app.on_message(filters.command(["start", "help"]))
 def send_wesnos(client, message):
-    app.send_message(message.chat.id, """\
+    app.send_message(
+        message.chat.id,
+        """\
 Hi there, I am editorBot.
 I edit all the latest message. Use /start to use me.
 /setsource to change the Source Chat
@@ -35,7 +36,8 @@ I edit all the latest message. Use /start to use me.
 /settarget to change the Target Chat
 
 \
-""")
+""",
+    )
 
 
 @app.on_message(filters.chat(source_id))
@@ -48,20 +50,28 @@ def forward_to_target_channel(client, message):
         if message.text:
             try:
                 app.edit_message_text(
-                    chat_id=target_id, message_id=last_message, text=message.text)
+                    chat_id=target_id, message_id=last_message, text=message.text
+                )
             except:
                 new_message = text_id.get("last_message")
                 app.edit_message_text(
-                    chat_id=target_id, message_id=new_message, text=message.text)
+                    chat_id=target_id, message_id=new_message, text=message.text
+                )
         if message.photo:
             file_id = client.download_media(message)
             try:
                 app.edit_message_media(
-                    chat_id=target_id, message_id=last_message, media=InputMediaPhoto(file_id))
+                    chat_id=target_id,
+                    message_id=last_message,
+                    media=InputMediaPhoto(file_id),
+                )
             except:
                 new_message = photo_id.get("last_message")
                 app.edit_message_media(
-                    chat_id=target_id, message_id=new_message, media=InputMediaPhoto(file_id))
+                    chat_id=target_id,
+                    message_id=new_message,
+                    media=InputMediaPhoto(file_id),
+                )
             os.remove(file_id)
         app.send_message(target_id, "Team Updated")
     else:
