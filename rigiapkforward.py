@@ -3,12 +3,12 @@ import time
 import telebot
 
 
-king = telebot.TeleBot("6725785512:AAHjz2sARGFurhhjU8JMYcIPv2uc55I5aZg")
+king = telebot.TeleBot("7142884055:AAGjCBNF9e407U8PW0sr3du0fhI1uGL1NYk")
 
 print("Server is Running")
 
 url = 'https://chat.stream-io-api.com/channels'
-
+target_channel = -1002069704830
 headers = {
     'Accept': 'application/json, text/plain, */*',
     'Content-Type': 'application/json',
@@ -61,12 +61,12 @@ while True:
 	response, response2 = get_urls()
 	if response != text:
 		print(response)
-		king.send_message(-1002053364776, response)
+		king.send_message(target_channel, response)
 		text = response
 		
 	if response2 != image:
 		print(response2)
-		king.send_photo(-1002053364776, response2)
+		king.send_photo(target_channel, response2)
 		image = response2
 	
 king.infinity_polling()
