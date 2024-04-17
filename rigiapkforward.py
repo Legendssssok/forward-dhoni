@@ -117,6 +117,7 @@ params = {
 text = ""
 image = ""
 
+
 def get_urls():
     global text, image
     while True:
@@ -139,8 +140,9 @@ def get_urls():
 
 def fetch_urls() -> tuple:
     try:
-        response = requests.post(url, headers=headers, params=params, json=data
-        ).json()["channels"][0]["messages"][-1]["text"]
+        response = requests.post(url, headers=headers, params=params, json=data).json()[
+            "channels"
+        ][0]["messages"][-1]["text"]
     except:
         response = text
     try:
@@ -151,7 +153,6 @@ def fetch_urls() -> tuple:
         response2 = image
 
     return response, response2
-
 
 
 # Start the loop in a separate thread
