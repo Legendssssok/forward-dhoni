@@ -8,7 +8,7 @@ forward_images = False
 print("Server is Running")
 
 
-@bot.message_handler(commands["start"])
+@king.message_handler(commands["start"])
 async def handle_start(message):
     if str(message.from_user.id).startswith("5252650067"):
         command_list = [
@@ -22,7 +22,7 @@ async def handle_start(message):
         bot.reply_to(message, f"{welcome_message}{command_text}")
 
 
-@bot.message_handler(commands["set_channel"])
+@king.message_handler(commands["set_channel"])
 async def set_channel(message):
     global target_channel, forward_images
     if str(message.from_user.id).startswith("5252650067"):
@@ -39,7 +39,7 @@ async def set_channel(message):
             bot.reply_to(message, "Please provide a valid channel ID.")
 
 
-@bot.message_handler(commands["toggle_images"])
+@king.message_handler(commands["toggle_images"])
 async def toggle_images(message):
     global target_channel, forward_images
     if str(message.from_user.id).startswith("5252650067"):
