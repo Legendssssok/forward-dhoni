@@ -49,6 +49,8 @@ async def toggle_images(message):
                 bot.reply_to(message, "Image forwarding is now ON.")
             else:
                 bot.reply_to(message, "Image forwarding is now OFF.")
+	except Exception as e:
+	    print(e)
 
 
 url = 'https://chat.stream-io-api.com/channels'
