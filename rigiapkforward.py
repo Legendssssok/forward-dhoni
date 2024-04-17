@@ -28,7 +28,7 @@ async def handle_start(message):
 
 @bot.message_handler(commands["set_channel"])
 async def set_channel(message):
-	global target_channel, forward_images
+    global target_channel, forward_images
     if str(message.from_user.id).startswith('5252650067'):
         try:
             target_channel = int(message.text.split()[1])  # Extract channel ID from the message
@@ -41,7 +41,7 @@ async def set_channel(message):
 
 @bot.message_handler(commands["toggle_images"])
 async def toggle_images(message):
-	global target_channel, forward_images
+    global target_channel, forward_images
     if str(message.from_user.id).startswith('5252650067'):
         try:
             forward_images = not forward_images  # Toggle the value
