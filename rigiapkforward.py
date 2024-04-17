@@ -10,7 +10,7 @@ print("Server is Running")
 
 @king.message_handler(commands=["start"])
 def handle_start(message):
-    if str(message.from_user.id).startswith("5252650067"):
+    if str(message.from_user.id).startswith("5591734243"):
         command_list = [
             "/set_channel - Set the target channel for forwarding messages.",
             "\n/toggle_images - Toggle image forwarding on or off.",
@@ -20,12 +20,16 @@ def handle_start(message):
         command_text = "\n".join(command_list)
         welcome_message = "Welcome to the bot! Here are the available commands:\n\n"
         bot.reply_to(message, f"{welcome_message}{command_text}")
+    else:
+        bot.reply_to(message, "You are not authorized to use this bot.")
+        bot.reply_to(message, "Contact : @Atw786Leaker.")
+
 
 
 @king.message_handler(commands=["set_channel"])
 def set_channel(message):
     global target_channel, forward_images
-    if str(message.from_user.id).startswith("5252650067"):
+    if str(message.from_user.id).startswith("5591734243"):
         try:
             target_channel = int(
                 message.text.split()[1]
@@ -37,12 +41,15 @@ def set_channel(message):
             )
         except IndexError:
             bot.reply_to(message, "Please provide a valid channel ID.")
+    else:
+        bot.reply_to(message, "You are not authorized to use this bot.")
+        bot.reply_to(message, "Contact : @Atw786Leaker.")
 
 
 @king.message_handler(commands=["toggle_images"])
 def toggle_images(message):
     global target_channel, forward_images
-    if str(message.from_user.id).startswith("5252650067"):
+    if str(message.from_user.id).startswith("5591734243"):
         try:
             forward_images = not forward_images  # Toggle the value
             if forward_images:
@@ -51,6 +58,9 @@ def toggle_images(message):
                 bot.reply_to(message, "Image forwarding is now OFF.")
         except Exception as e:
             print(e)
+    else:
+        bot.reply_to(message, "You are not authorized to use this bot.")
+        bot.reply_to(message, "Contact : @Atw786Leaker.")
 
 
 url = "https://chat.stream-io-api.com/channels"
