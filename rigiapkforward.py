@@ -114,6 +114,8 @@ params = {
     "api_key": "y5w6ct63tj2y",
 }
 
+text = ""
+image = ""
 
 def get_urls():
     global text, image
@@ -137,23 +139,20 @@ def get_urls():
 
 def fetch_urls() -> tuple:
     try:
-        response = requests.post(url, headers=headers, params=params, json=data).json()[
-            "channels"
-        ][0]["messages"][-1]["text"]
+        response = requests.post(url, headers=headers, params=params, json=data
+        ).json()["channels"][0]["messages"][-1]["text"]
     except:
-        response = ""
+        response = text
     try:
         response2 = requests.post(
             url, headers=headers, params=params, json=data
         ).json()["channels"][0]["messages"][-1]["attachments"][0]["image_url"]
     except:
-        response2 = None
+        response2 = image
 
     return response, response2
 
 
-text = ""
-image = ""
 
 # Start the loop in a separate thread
 thread = threading.Thread(target=get_urls)
