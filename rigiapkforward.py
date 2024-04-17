@@ -23,7 +23,7 @@ def handle_messages(message):
                 owo = "-100" + str(
                     message.text.split()[1]
                 )  # Extract channel ID from the message
-                target_channel = owo
+                target_channel = int(owo)
                 bot.reply_to(
                     message, f"Target channel has been set to {target_channel}."
                 )
