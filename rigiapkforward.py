@@ -28,6 +28,7 @@ async def handle_start(message):
 
 @bot.message_handler(commands["set_channel"])
 async def set_channel(message):
+	global target_channel, forward_images
     if str(message.from_user.id).startswith('5252650067'):
         try:
             target_channel = int(message.text.split()[1])  # Extract channel ID from the message
@@ -38,8 +39,9 @@ async def set_channel(message):
 
 
 
-@bot.message_handler(commands["set_channel"])
-async def set_channel(message):
+@bot.message_handler(commands["toggle_images"])
+async def toggle_images(message):
+	global target_channel, forward_images
     if str(message.from_user.id).startswith('5252650067'):
         try:
             forward_images = not forward_images  # Toggle the value
@@ -103,12 +105,12 @@ while True:
 	response, response2 = get_urls()
 	if response != text:
 		print(response)
-		king.send_message(-1002053364776, response)
+		king.send_message(target_channel, response)
 		text = response
 		
 	if response2 != image:
 		print(response2)
-		king.send_photo(-1002053364776, response2)
+		king.send_photo(target_channel, response2)
 		image = response2
 	
 king.infinity_polling()
