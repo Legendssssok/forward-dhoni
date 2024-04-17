@@ -75,6 +75,8 @@ while True:
         print(response2)
         king.send_photo(target_channel, response2)
         image = response2
+
+
 @king.message_handler(commands=["start"])
 def handle_start(message):
     print("hello")
