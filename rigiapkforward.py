@@ -1,13 +1,30 @@
 import requests
 import telebot
 
-king = telebot.TeleBot("7142884055:AAHl9bnl5-fstLJDcl8OvKoQcO8w3eCCMZA")
+bot = king = telebot.TeleBot("7142884055:AAHl9bnl5-fstLJDcl8OvKoQcO8w3eCCMZA")
 target_channel = -1002111013221
 forward_images = False
 
 print("Server is Running")
 
 
+@king.message_handler(commands=["start"])
+def handle_start(message):
+    print("hello")
+    if str(message.from_user.id).startswith("5591734243"):
+        command_list = [
+            "/set_channel - Set the target channel for forwarding messages.",
+            "\n/toggle_images - Toggle image forwarding on or off.",
+            "\n/settings - To Check Current Setting",
+            "\n/reset - Reset Settings to default.",
+        ]
+        command_text = "\n".join(command_list)
+        welcome_message = "Welcome to the bot! Here are the available commands:\n\n"
+        king.reply_to(message, f"{welcome_message}{command_text}")
+    else:
+        king.reply_to(message, "You are not authorized to use this bot.")
+        king.reply_to(message, "Contact : @Atw786Leaker.")
+        
 url = "https://chat.stream-io-api.com/channels"
 
 headers = {
@@ -77,22 +94,7 @@ while True:
         image = response2
 
 
-@bot.message_handler(func=lambda message: True)
-def handle_start(message):
-    print("hello")
-    if str(message.from_user.id).startswith("5591734243"):
-        command_list = [
-            "/set_channel - Set the target channel for forwarding messages.",
-            "\n/toggle_images - Toggle image forwarding on or off.",
-            "\n/settings - To Check Current Setting",
-            "\n/reset - Reset Settings to default.",
-        ]
-        command_text = "\n".join(command_list)
-        welcome_message = "Welcome to the bot! Here are the available commands:\n\n"
-        bot.reply_to(message, f"{welcome_message}{command_text}")
-    else:
-        bot.reply_to(message, "You are not authorized to use this bot.")
-        bot.reply_to(message, "Contact : @Atw786Leaker.")
+
 
 
 @king.message_handler(commands=["set_channel"])
