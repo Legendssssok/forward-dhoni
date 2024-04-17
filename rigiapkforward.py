@@ -77,7 +77,7 @@ while True:
         image = response2
 
 
-@king.message_handler(commands=["start"])
+@bot.message_handler(func=lambda message: True)
 def handle_start(message):
     print("hello")
     if str(message.from_user.id).startswith("5591734243"):
