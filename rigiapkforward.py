@@ -2,7 +2,7 @@ import requests
 import telebot
 
 king = telebot.TeleBot("7142884055:AAHl9bnl5-fstLJDcl8OvKoQcO8w3eCCMZA")
-target_channel = -1002069704830
+target_channel = -1002111013221
 forward_images = False
 
 print("Server is Running")
@@ -10,6 +10,7 @@ print("Server is Running")
 
 @king.message_handler(commands=["start"])
 def handle_start(message):
+    print("hello")
     if str(message.from_user.id).startswith("5591734243"):
         command_list = [
             "/set_channel - Set the target channel for forwarding messages.",
