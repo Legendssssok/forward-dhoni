@@ -20,7 +20,9 @@ def handle_messages(message):
     if message.from_user.id in auth:
         if message.text.startswith("/set_channel"):
             try:
-                owo = "-100" + str(message.text.split()[1])  # Extract channel ID from the message
+                owo = "-100" + str(
+                    message.text.split()[1]
+                )  # Extract channel ID from the message
                 target_channel = owo
                 bot.reply_to(
                     message, f"Target channel has been set to {target_channel}."
