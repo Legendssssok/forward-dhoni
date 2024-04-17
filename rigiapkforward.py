@@ -25,7 +25,6 @@ def handle_start(message):
         bot.reply_to(message, "Contact : @Atw786Leaker.")
 
 
-
 @king.message_handler(commands=["set_channel"])
 def set_channel(message):
     global target_channel, forward_images
