@@ -24,7 +24,8 @@ def handle_start(message):
     else:
         king.reply_to(message, "You are not authorized to use this bot.")
         king.reply_to(message, "Contact : @Atw786Leaker.")
-        
+
+
 url = "https://chat.stream-io-api.com/channels"
 
 headers = {
@@ -92,9 +93,6 @@ while True:
         print(response2)
         king.send_photo(target_channel, response2)
         image = response2
-
-
-
 
 
 @king.message_handler(commands=["set_channel"])
