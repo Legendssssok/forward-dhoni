@@ -8,8 +8,8 @@ forward_images = False
 print("Server is Running")
 
 
-@king.message_handler(commands["start"])
-async def handle_start(message):
+@king.message_handler(commands=["start"])
+def handle_start(message):
     if str(message.from_user.id).startswith("5252650067"):
         command_list = [
             "/set_channel - Set the target channel for forwarding messages.",
@@ -22,8 +22,8 @@ async def handle_start(message):
         bot.reply_to(message, f"{welcome_message}{command_text}")
 
 
-@king.message_handler(commands["set_channel"])
-async def set_channel(message):
+@king.message_handler(commands=["set_channel"])
+def set_channel(message):
     global target_channel, forward_images
     if str(message.from_user.id).startswith("5252650067"):
         try:
@@ -39,8 +39,8 @@ async def set_channel(message):
             bot.reply_to(message, "Please provide a valid channel ID.")
 
 
-@king.message_handler(commands["toggle_images"])
-async def toggle_images(message):
+@king.message_handler(commands=["toggle_images"])
+def toggle_images(message):
     global target_channel, forward_images
     if str(message.from_user.id).startswith("5252650067"):
         try:
