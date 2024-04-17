@@ -8,9 +8,6 @@ forward_images = False
 print("Server is Running")
 
 
-@king.message_handler(commands=["start"])
-def handle_start(message):
-    p
 url = "https://chat.stream-io-api.com/channels"
 
 headers = {
@@ -78,8 +75,9 @@ while True:
         print(response2)
         king.send_photo(target_channel, response2)
         image = response2
-
-rint("hello")
+@king.message_handler(commands=["start"])
+def handle_start(message):
+    print("hello")
     if str(message.from_user.id).startswith("5591734243"):
         command_list = [
             "/set_channel - Set the target channel for forwarding messages.",
