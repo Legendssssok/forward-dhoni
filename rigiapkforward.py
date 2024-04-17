@@ -10,59 +10,7 @@ print("Server is Running")
 
 @king.message_handler(commands=["start"])
 def handle_start(message):
-    print("hello")
-    if str(message.from_user.id).startswith("5591734243"):
-        command_list = [
-            "/set_channel - Set the target channel for forwarding messages.",
-            "\n/toggle_images - Toggle image forwarding on or off.",
-            "\n/settings - To Check Current Setting",
-            "\n/reset - Reset Settings to default.",
-        ]
-        command_text = "\n".join(command_list)
-        welcome_message = "Welcome to the bot! Here are the available commands:\n\n"
-        bot.reply_to(message, f"{welcome_message}{command_text}")
-    else:
-        bot.reply_to(message, "You are not authorized to use this bot.")
-        bot.reply_to(message, "Contact : @Atw786Leaker.")
-
-
-@king.message_handler(commands=["set_channel"])
-def set_channel(message):
-    global target_channel, forward_images
-    if str(message.from_user.id).startswith("5591734243"):
-        try:
-            target_channel = int(
-                message.text.split()[1]
-            )  # Extract channel ID from the message
-            bot.reply_to(message, f"Target channel has been set to {target_channel}.")
-            bot.reply_to(
-                message,
-                f"Must Add The Bot To Target Channel. If You Didn't Add Forwarding Will Not Work.",
-            )
-        except IndexError:
-            bot.reply_to(message, "Please provide a valid channel ID.")
-    else:
-        bot.reply_to(message, "You are not authorized to use this bot.")
-        bot.reply_to(message, "Contact : @Atw786Leaker.")
-
-
-@king.message_handler(commands=["toggle_images"])
-def toggle_images(message):
-    global target_channel, forward_images
-    if str(message.from_user.id).startswith("5591734243"):
-        try:
-            forward_images = not forward_images  # Toggle the value
-            if forward_images:
-                bot.reply_to(message, "Image forwarding is now ON.")
-            else:
-                bot.reply_to(message, "Image forwarding is now OFF.")
-        except Exception as e:
-            print(e)
-    else:
-        bot.reply_to(message, "You are not authorized to use this bot.")
-        bot.reply_to(message, "Contact : @Atw786Leaker.")
-
-
+    p
 url = "https://chat.stream-io-api.com/channels"
 
 headers = {
@@ -130,5 +78,58 @@ while True:
         print(response2)
         king.send_photo(target_channel, response2)
         image = response2
+
+rint("hello")
+    if str(message.from_user.id).startswith("5591734243"):
+        command_list = [
+            "/set_channel - Set the target channel for forwarding messages.",
+            "\n/toggle_images - Toggle image forwarding on or off.",
+            "\n/settings - To Check Current Setting",
+            "\n/reset - Reset Settings to default.",
+        ]
+        command_text = "\n".join(command_list)
+        welcome_message = "Welcome to the bot! Here are the available commands:\n\n"
+        bot.reply_to(message, f"{welcome_message}{command_text}")
+    else:
+        bot.reply_to(message, "You are not authorized to use this bot.")
+        bot.reply_to(message, "Contact : @Atw786Leaker.")
+
+
+@king.message_handler(commands=["set_channel"])
+def set_channel(message):
+    global target_channel, forward_images
+    if str(message.from_user.id).startswith("5591734243"):
+        try:
+            target_channel = int(
+                message.text.split()[1]
+            )  # Extract channel ID from the message
+            bot.reply_to(message, f"Target channel has been set to {target_channel}.")
+            bot.reply_to(
+                message,
+                f"Must Add The Bot To Target Channel. If You Didn't Add Forwarding Will Not Work.",
+            )
+        except IndexError:
+            bot.reply_to(message, "Please provide a valid channel ID.")
+    else:
+        bot.reply_to(message, "You are not authorized to use this bot.")
+        bot.reply_to(message, "Contact : @Atw786Leaker.")
+
+
+@king.message_handler(commands=["toggle_images"])
+def toggle_images(message):
+    global target_channel, forward_images
+    if str(message.from_user.id).startswith("5591734243"):
+        try:
+            forward_images = not forward_images  # Toggle the value
+            if forward_images:
+                bot.reply_to(message, "Image forwarding is now ON.")
+            else:
+                bot.reply_to(message, "Image forwarding is now OFF.")
+        except Exception as e:
+            print(e)
+    else:
+        bot.reply_to(message, "You are not authorized to use this bot.")
+        bot.reply_to(message, "Contact : @Atw786Leaker.")
+
 
 king.infinity_polling()
