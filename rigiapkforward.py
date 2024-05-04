@@ -1,4 +1,3 @@
-import threading
 import time
 
 import requests
@@ -153,7 +152,6 @@ def fetch_urls() -> tuple:
         response2 = image
 
     return response, response2
-
 
 
 # Start the bot
