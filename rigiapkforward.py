@@ -117,6 +117,22 @@ params = {
 text = ""
 image = ""
 
+def fetch_urls() -> tuple:
+    try:
+        response = requests.post(url, headers=headers, params=params, json=data).json()[
+            "channels"
+        ][0]["messages"][-1]["text"]
+    except:
+        response = text
+    try:
+        response2 = requests.post(
+            url, headers=headers, params=params, json=data
+        ).json()["channels"][0]["messages"][-1]["attachments"][0]["image_url"]
+    except:
+        response2 = image
+
+    return response, response2
+
 while True:
     try:
         response, response2 = fetch_urls()
@@ -135,21 +151,7 @@ while True:
         print("Error:", e)
 
 
-def fetch_urls() -> tuple:
-    try:
-        response = requests.post(url, headers=headers, params=params, json=data).json()[
-            "channels"
-        ][0]["messages"][-1]["text"]
-    except:
-        response = text
-    try:
-        response2 = requests.post(
-            url, headers=headers, params=params, json=data
-        ).json()["channels"][0]["messages"][-1]["attachments"][0]["image_url"]
-    except:
-        response2 = image
 
-    return response, response2
 
 
 # Start the bot
