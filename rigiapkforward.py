@@ -119,24 +119,23 @@ text = ""
 image = ""
 
 
-def get_urls():
+while True:
     global text, image
-    while True:
-        try:
-            response, response2 = fetch_urls()
-            if response != text:  # Check if response is not empty
-                print(response)
-                bot.send_message(target_channel, response)
-                text = response
+    try:
+        response, response2 = fetch_urls()
+        if response != text:  # Check if response is not empty
+            print(response)
+            bot.send_message(target_channel, response)
+            text = response
 
-            if forward_images and response2 and response2 != image:
-                print(response2)
-                bot.send_photo(target_channel, response2)
-                image = response2
+        if forward_images and response2 and response2 != image:
+            print(response2)
+            bot.send_photo(target_channel, response2)
+            image = response2
 
-            time.sleep(0.1)
-        except Exception as e:
-            print("Error:", e)
+        time.sleep(0.1)
+    except Exception as e:
+        print("Error:", e)
 
 
 def fetch_urls() -> tuple:
@@ -156,9 +155,6 @@ def fetch_urls() -> tuple:
     return response, response2
 
 
-# Start the loop in a separate thread
-thread = threading.Thread(target=get_urls)
-thread.start()
 
 # Start the bot
 bot.polling()
