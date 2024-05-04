@@ -117,8 +117,6 @@ params = {
 text = ""
 image = ""
 
-global text, image
-
 while True:
     try:
         response, response2 = fetch_urls()
