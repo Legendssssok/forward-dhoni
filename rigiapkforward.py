@@ -117,6 +117,7 @@ params = {
 text = ""
 image = ""
 
+
 def fetch_urls() -> tuple:
     try:
         response = requests.post(url, headers=headers, params=params, json=data).json()[
@@ -132,6 +133,7 @@ def fetch_urls() -> tuple:
         response2 = image
 
     return response, response2
+
 
 while True:
     try:
@@ -149,9 +151,6 @@ while True:
         time.sleep(0.1)
     except Exception as e:
         print("Error:", e)
-
-
-
 
 
 # Start the bot
