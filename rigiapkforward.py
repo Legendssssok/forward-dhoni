@@ -117,9 +117,9 @@ params = {
 text = ""
 image = ""
 
+global text, image
 
 while True:
-    global text, image
     try:
         response, response2 = fetch_urls()
         if response != text:  # Check if response is not empty
