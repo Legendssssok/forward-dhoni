@@ -4,8 +4,8 @@ import time
 import requests
 import telebot
 
-bot = telebot.TeleBot("7142884055:AAHl9bnl5-fstLJDcl8OvKoQcO8w3eCCMZA")
-target_channel = -1002069704830
+bot = telebot.TeleBot("6310177965:AAFuQKBpigzOve9nybLY4GBacr-kiG9w0zk")
+target_channel = -1002058605209
 forward_images = False  # Variable to track if image forwarding is on or off
 
 print("Server is Running")
