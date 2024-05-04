@@ -148,9 +148,9 @@ while True:
             bot.send_photo(target_channel, response2)
             image = response2
 
-        time.sleep(0.1)
     except Exception as e:
         print("Error:", e)
+    time.sleep(3)
 
 
 # Start the bot
